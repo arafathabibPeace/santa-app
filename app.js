@@ -4,6 +4,7 @@ const morgan = require('morgan');
 const app = express();
 const bodyParser = require('body-parser');
 const nodemailer = require('nodemailer');
+const creds = require('./mailer');
 
 app.use(cors());
 app.use(bodyParser());
@@ -27,11 +28,11 @@ app.post("/sendLetter", (req, res) => {
 
       // Create a SMTP transporter object
       const transporter = nodemailer.createTransport({
-        host: 'smtp.ethereal.email',
-        port: 587,
+        host: creds.host,
+        port: creds.port,
         auth: {
-          user: 'vicente.beer@ethereal.email',
-          pass: 'PtMUBdxyq9qUSU5yhZ'
+          user: creds.auth.user,
+          pass: creds.auth.pass
         }
       });
 
