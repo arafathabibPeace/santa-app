@@ -41,7 +41,7 @@ app.post("/sendLetter", (req, res) => {
         to: 'santa@northpole.com',
         subject: 'Nodemailer is unicode friendly ✔',
         text: 'Username: ' + username + '\nAddress: ' + address + '\nWish: ' + wish,
-        html: '<p><b>Hi Santa, </b></p> <p> I am ' + username + ' and I wish to have a '+ wish + '. Thank you.</p> Address: ' + address 
+        html: '<p><b>Hi Santa, </b></p> <p> I am ' + username + ' and my wish/es is/are '+ wish + '. Thank you.</p> Address: ' + address 
       };
 
       transporter.sendMail(message, (err, info) => {

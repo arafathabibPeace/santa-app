@@ -29,6 +29,7 @@ function GiftRequest3() {
     const [profiles, setProfiles] = useState([])
     const [otherDetails, setOtherDetails] = useState({})
     const [message, setMessage] = useState('')
+    const [emailResponse,setEmailResponse] = useState('')
     const [open, setOpen] = useState(false)
     const isFieldEmpty = (username === '' || wish === '');
 
@@ -49,8 +50,12 @@ function GiftRequest3() {
 
 
 
-    const sendEmail = () => {
-        axios.post(`http://localhost:3000/sendLetter`,{username:username,wish:wish,address:otherDetails.address})
+    const sendEmail = (details) => {
+        axios.post(`http://localhost:3000/sendLetter`, details)
+        .then(res=>{
+            console.log(res)
+            setEmailResponse(res)
+        })
     }
 
     const getAge = (birthdate) => {
@@ -69,7 +74,7 @@ function GiftRequest3() {
                 console.log(birthdate, age, profile.address)
                 if (age < 10) {
                     setMessage('Wish granted')
-                    sendEmail()
+                    sendEmail({ username:username, wish:wish, address: profile.address })
                 } else {
                     setMessage('This is for below ten year old only')
                 }
