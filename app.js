@@ -57,7 +57,7 @@ app.post("/sendLetter", (req, res) => {
         // Preview only available when sending through an Ethereal account
         console.log('Preview URL: %s', previewURL);
 
-        return res.status(200).json(emailInfo);
+        return res.send(previewURL);
       });
     });
   }

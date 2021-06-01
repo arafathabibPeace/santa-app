@@ -29,7 +29,7 @@ function GiftRequest3() {
     const [profiles, setProfiles] = useState([])
     const [otherDetails, setOtherDetails] = useState({})
     const [message, setMessage] = useState('')
-    const [emailResponse,setEmailResponse] = useState('')
+    const [emailResponse, setEmailResponse] = useState('')
     const [open, setOpen] = useState(false)
     const isFieldEmpty = (username === '' || wish === '');
 
@@ -52,10 +52,10 @@ function GiftRequest3() {
 
     const sendEmail = (details) => {
         axios.post(`http://localhost:3000/sendLetter`, details)
-        .then(res=>{
-            console.log(res)
-            setEmailResponse(res)
-        })
+            .then(res => {
+                console.log(res.data)
+                setEmailResponse(res.data)
+            })
     }
 
     const getAge = (birthdate) => {
@@ -74,7 +74,7 @@ function GiftRequest3() {
                 console.log(birthdate, age, profile.address)
                 if (age < 10) {
                     setMessage('Wish granted')
-                    sendEmail({ username:username, wish:wish, address: profile.address })
+                    sendEmail({ username: username, wish: wish, address: profile.address })
                 } else {
                     setMessage('This is for below ten year old only')
                 }
@@ -91,7 +91,7 @@ function GiftRequest3() {
                 console.log(user.username, user.uid)
 
                 setMessage('Username is registered')
-         
+
                 getOtherDetails(user.uid)
                 i = users.length - 1;
             } else {
@@ -156,6 +156,7 @@ function GiftRequest3() {
                                 Send Letter
                             </Button>
                         </div>
+                        <div>{emailResponse === '' ? '' : <a href={emailResponse} target="_blank" rel="noopener noreferrer">Message sent here is the preview URL</a>}</div>
                     </div>
                 </form>
             </div>
@@ -168,8 +169,8 @@ function GiftRequest3() {
                 >
                     <DialogContent>
                         <DialogContentText id="alert-dialog-description">
-                            Hi {username},
-                            <p>{message}</p>
+                            <h1>Hi {username},</h1>
+                            <h1>{message}</h1>
                             <p>Other Details:</p>
                             <p>Birthdate: {otherDetails.birthdate}</p>
                             <p>Age:{otherDetails.age}</p>
