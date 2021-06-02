@@ -82,9 +82,9 @@ function GiftRequest3() {
         //         }
         //     }
         // })
-
-        for (let i = 0; i < profiles.length; i++) {
-            const profile = profiles[i]
+        for(let profile of profiles){
+        //for (let i = 0; i < profiles.length; i++) {
+            //const profile = profiles[i]
             if (profile.userUid === uid) {
                 const birthdate = profile.birthdate.substring(8, 10) + '/' + profile.birthdate.substring(5, 7) + '/' + profile.birthdate.substring(0, 4);
                 const age = getAge(birthdate)
@@ -117,10 +117,10 @@ function GiftRequest3() {
 
         // })
 
-        for (let i = 0; i < users.length; i++) {
-            const user = users[i]
+        for(let user of users){
+        //for (let i = 0; i < users.length; i++) {
+            //const user = users[i]
             if (user.username === username) {
-                i = users.length
                 setMessage('Username is registered')
                 getOtherDetails(user.uid)   
                 break;             
