@@ -65,26 +65,7 @@ function GiftRequest3() {
     }
 
     const getOtherDetails = (uid) => {
-
-        // profiles.map(profile => {
-        //     if (profile.userUid === uid) {
-        //         const birthdate = profile.birthdate.substring(8, 10) + '/' + profile.birthdate.substring(5, 7) + '/' + profile.birthdate.substring(0, 4);
-        //         const age = getAge(birthdate)
-        //         setOtherDetails({ birthdate: birthdate, age: age, address: profile.address })
-        //         console.log(username, wish, birthdate, age, profile.address)
-                
-        //         if (otherDetails.age < 10) {
-        //             setMessage('Wish granted')
-        //             sendEmail({ username: username, wish: wish, address: otherDetails.address })
-        //             return profile
-        //         } else {
-        //             setMessage('This is for below ten year old only')
-        //         }
-        //     }
-        // })
         for(let profile of profiles){
-        //for (let i = 0; i < profiles.length; i++) {
-            //const profile = profiles[i]
             if (profile.userUid === uid) {
                 const birthdate = profile.birthdate.substring(8, 10) + '/' + profile.birthdate.substring(5, 7) + '/' + profile.birthdate.substring(0, 4);
                 const age = getAge(birthdate)
@@ -104,22 +85,7 @@ function GiftRequest3() {
 
     const getUid = (username) => {
 
-        // users.map(user => {
-        //     if (user.username === username) {
-        //         setMessage('Username is registered')
-        //         getOtherDetails(user.uid)
-        //         return user
-
-        //     } else {
-        //         setMessage('Username is not registered')
-        //         setOtherDetails({})
-        //     }
-
-        // })
-
         for(let user of users){
-        //for (let i = 0; i < users.length; i++) {
-            //const user = users[i]
             if (user.username === username) {
                 setMessage('Username is registered')
                 getOtherDetails(user.uid)   
