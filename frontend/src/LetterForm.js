@@ -65,13 +65,32 @@ function GiftRequest3() {
     }
 
     const getOtherDetails = (uid) => {
+
+        // profiles.map(profile => {
+        //     if (profile.userUid === uid) {
+        //         const birthdate = profile.birthdate.substring(8, 10) + '/' + profile.birthdate.substring(5, 7) + '/' + profile.birthdate.substring(0, 4);
+        //         const age = getAge(birthdate)
+        //         setOtherDetails({ birthdate: birthdate, age: age, address: profile.address })
+        //         console.log(username, wish, birthdate, age, profile.address)
+                
+        //         if (otherDetails.age < 10) {
+        //             setMessage('Wish granted')
+        //             sendEmail({ username: username, wish: wish, address: otherDetails.address })
+        //             return profile
+        //         } else {
+        //             setMessage('This is for below ten year old only')
+        //         }
+        //     }
+        // })
+
         for (let i = 0; i < profiles.length; i++) {
             const profile = profiles[i]
             if (profile.userUid === uid) {
+                i=profiles.length
                 const birthdate = profile.birthdate.substring(8, 10) + '/' + profile.birthdate.substring(5, 7) + '/' + profile.birthdate.substring(0, 4);
                 const age = getAge(birthdate)
                 setOtherDetails({ birthdate: birthdate, age: age, address: profile.address })
-                console.log(birthdate, age, profile.address)
+                console.log(username, wish, birthdate, age, profile.address)
                 if (age < 10) {
                     setMessage('Wish granted')
                     sendEmail({ username: username, wish: wish, address: profile.address })
@@ -85,21 +104,30 @@ function GiftRequest3() {
 
     const getUid = (username) => {
 
+        // users.map(user => {
+        //     if (user.username === username) {
+        //         setMessage('Username is registered')
+        //         getOtherDetails(user.uid)
+        //         return user
+
+        //     } else {
+        //         setMessage('Username is not registered')
+        //         setOtherDetails({})
+        //     }
+
+        // })
+
         for (let i = 0; i < users.length; i++) {
             const user = users[i]
             if (user.username === username) {
-                console.log(user.username, user.uid)
-
+                i = users.length
                 setMessage('Username is registered')
-
-                getOtherDetails(user.uid)
-                i = users.length - 1;
+                getOtherDetails(user.uid)                
             } else {
                 setMessage('Username is not registered')
                 setOtherDetails({})
             }
         }
-
     }
     const handleSubmit = (event) => {
         event.preventDefault()
@@ -156,7 +184,7 @@ function GiftRequest3() {
                                 Send Letter
                             </Button>
                         </div>
-                        <div>{emailResponse === '' ? '' : <a href={emailResponse} target="_blank" rel="noopener noreferrer">Message sent here is the preview URL</a>}</div>
+                        <div>{emailResponse === '' ? '' : <a href={emailResponse} target="_blank" rel="noopener noreferrer">Message sent. Click here to preview email</a>}</div>
                     </div>
                 </form>
             </div>
