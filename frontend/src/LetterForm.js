@@ -86,7 +86,6 @@ function GiftRequest3() {
         for (let i = 0; i < profiles.length; i++) {
             const profile = profiles[i]
             if (profile.userUid === uid) {
-                i=profiles.length
                 const birthdate = profile.birthdate.substring(8, 10) + '/' + profile.birthdate.substring(5, 7) + '/' + profile.birthdate.substring(0, 4);
                 const age = getAge(birthdate)
                 setOtherDetails({ birthdate: birthdate, age: age, address: profile.address })
@@ -97,6 +96,7 @@ function GiftRequest3() {
                 } else {
                     setMessage('This is for below ten year old only')
                 }
+                break;
             }
         }
 
@@ -122,7 +122,8 @@ function GiftRequest3() {
             if (user.username === username) {
                 i = users.length
                 setMessage('Username is registered')
-                getOtherDetails(user.uid)                
+                getOtherDetails(user.uid)   
+                break;             
             } else {
                 setMessage('Username is not registered')
                 setOtherDetails({})
