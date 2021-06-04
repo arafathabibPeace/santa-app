@@ -19,11 +19,6 @@ const reducer = (state, action) => {
                 ...state,
                 message: action.payload
             }
-        case 'SET_EMAIL_PREVIEW_URL':
-            return {
-                ...state,
-                emailPreviewURL: action.payload
-            }
         default:
             return state
 
