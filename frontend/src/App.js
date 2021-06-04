@@ -3,7 +3,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 import CssBaseline from '@material-ui/core/CssBaseline';
-import LetterForm from './LetterForm';
+import LetterForm from './component/LetterForm';
 
 const useStyles = makeStyles((theme) => ({
   root: {
