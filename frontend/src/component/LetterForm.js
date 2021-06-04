@@ -20,7 +20,7 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-function LetterForm4() {
+function LetterForm() {
     const classes = useStyles();
     const [username, setUsername] = useState('')
     const [wish, setWish] = useState('')
@@ -112,4 +112,4 @@ function LetterForm4() {
     );
 }
 
-export default LetterForm4;
+export default LetterForm;
